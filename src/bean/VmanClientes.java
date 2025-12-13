@@ -231,6 +231,21 @@ public class VmanClientes  implements java.io.Serializable {
         this.vmanAtivo = vmanAtivo;
     }
 
+    @Override
+    public String toString() {
+        return this.vmanIdClientes + " - " + this.vmanNome;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (object instanceof VmanClientes) {
+            VmanClientes vmanClientes = (VmanClientes) object;
+            if (vmanClientes.getVmanIdClientes()== this.getVmanIdClientes()) {
+                return true;
+            }
+        }
+        return false;
+    }
 
 
 

@@ -19,6 +19,7 @@ import com.formdev.flatlaf.FlatIntelliJLaf;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import view.Produtos.JDlgProdutos;
+import view.Vendas.JDlgVendas;
 
 /**
  *
@@ -63,8 +64,6 @@ public class JFrmPrincipal extends javax.swing.JFrame {
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JSeparator();
-        jToolBar1 = new javax.swing.JToolBar();
-        jButton1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem6 = new javax.swing.JMenuItem();
@@ -88,15 +87,7 @@ public class JFrmPrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jToolBar1.setRollover(true);
-
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/SistemaNunes/src/img/icons8-alterar-50.png"))); // NOI18N
-        jButton1.setFocusable(false);
-        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jButton1);
-
-        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/img/icons8-cadastro-40.png"))); // NOI18N
+        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-cadastro-40.png"))); // NOI18N
         jMenu2.setText("Cadastro");
 
         jMenuItem6.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
@@ -142,17 +133,22 @@ public class JFrmPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu2);
 
-        jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/img/icons8-banco-de-dados-40.png"))); // NOI18N
+        jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-banco-de-dados-40.png"))); // NOI18N
         jMenu3.setText("Movimento");
 
         jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-balcão-de-caixa-40.png"))); // NOI18N
         jMenuItem1.setText("Vendas");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem1);
 
         jMenuBar1.add(jMenu3);
 
-        jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/img/icons8-theme-40.png"))); // NOI18N
+        jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-theme-40.png"))); // NOI18N
         jMenu4.setText("Tema");
 
         jMnTemaclaro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-droid-40.png"))); // NOI18N
@@ -190,13 +186,11 @@ public class JFrmPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 674, Short.MAX_VALUE)
+            .addGap(0, 674, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 314, Short.MAX_VALUE))
+            .addGap(0, 346, Short.MAX_VALUE)
         );
 
         pack();
@@ -292,6 +286,13 @@ public class JFrmPrincipal extends javax.swing.JFrame {
         jDlgUsuarios.setVisible(true);
     }//GEN-LAST:event_jMenuItem10ActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        JDlgVendas jDlgUsuarios = new JDlgVendas(this, true);
+        jDlgUsuarios.setLocationRelativeTo(this); // centraliza
+        jDlgUsuarios.setVisible(true);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -318,7 +319,6 @@ public class JFrmPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -337,6 +337,5 @@ public class JFrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMnTemaclaro;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JPopupMenu.Separator jSeparator3;
-    private javax.swing.JToolBar jToolBar1;
     // End of variables declaration//GEN-END:variables
 }

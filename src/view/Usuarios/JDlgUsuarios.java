@@ -52,7 +52,8 @@ public class JDlgUsuarios extends javax.swing.JDialog {
 
     public void beanView(VmanUsuarios usuarios) {
         jTxtCodigo.setText(Util.intToString(usuarios.getVmanIdusuarios()));
-        jTxtNome.setText(usuarios.getVmanNome());
+        
+        //jTxtNome.setText(usuarios.getVmanNome());
         jTxtApelido.setText(usuarios.getVmanApelido());
         jFmtCpf.setText(usuarios.getVmanCpf());
         jFmtDataDeNascimento.setText(Util.dateToStr(usuarios.getVmanDataNascimento()));
@@ -67,8 +68,13 @@ public class JDlgUsuarios extends javax.swing.JDialog {
     }
 
     public VmanUsuarios viewBean() throws ParseException {
+        
+        
         VmanUsuarios usuarios = new VmanUsuarios();
-        int codigo = Util.strToInt(jTxtCodigo.getText()); //ou usuarios.setIdusuarios(Util.strToInt(jTxtCodigo.getText()));
+        
+        //int codigo = Util.strToInt(jTxtCodigo.getText()); //ou usuarios.setIdusuarios(Util.strToInt(jTxtCodigo.getText()));
+        int codigo = Util.strToInt(jTxtCodigo.getText());
+        
         usuarios.setVmanIdusuarios(codigo);
         usuarios.setVmanNome(jTxtNome.getText());
         usuarios.setVmanApelido(jTxtApelido.getText());

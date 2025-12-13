@@ -3,11 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package view.Clientes;
+package view.Vendedor;
 
-import dao.ClientesDAO;
-import bean.VmanClientes;
-import dao.ClientesDAO;
+import view.Vendedor.*;
+import dao.VendedorAO;
+import bean.VmanVendedor;
+import dao.VendedorAO;
 import tools.Util;
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
@@ -17,28 +18,28 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.MaskFormatter;
-import view.Clientes.JDlgClientes;
-import view.Clientes.JDlgClientesPesquisar;
+import view.Vendedor.JDlgVendedor;
+import view.Vendedor.JDlgVendedorPesquisar;
 
 /**
  *
  * @author u10916731103
  */
-public class JDlgClientes extends javax.swing.JDialog {
+public class JDlgVendedor extends javax.swing.JDialog {
 
     private JComponent[] CAMPOS_EDICAO;
     private boolean incluir;
 
-    public JDlgClientes(java.awt.Frame parent, boolean modal) {
+    public JDlgVendedor(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         setTitle("Cadastro de Produtos");
         setLocationRelativeTo(null);
         Util.habilitar(false, jTxtCodigo, jTxtNome, jBtnCancelar, jBtnConfirmar, jBtnExcluir, jBtnAlterar,
-                jCboNivel, jFmtCelular, jCboSEXOOOO,
+                 jFmtCelular, jCboSEXOOOO,
                 jChbAtivo, jFmtCpf, jFmtDataDeNascimento, jTxtEmail,
                 jCboSEXOOOO, jTxtCidade, jTxtBairro, jTxtendereço,
-                jFmtCEP1, jFmtRG, jFmtDivida, jFmtTelefone);
+                jFmtCEP1);
 
         TitledBorder CPF = BorderFactory.createTitledBorder("CPF");
         TitledBorder DataNasc = BorderFactory.createTitledBorder("Data de Nascimento");
@@ -49,11 +50,11 @@ public class JDlgClientes extends javax.swing.JDialog {
         TitledBorder RG = BorderFactory.createTitledBorder("RG");
         jFmtCpf.setBorder(CPF);
         jFmtCEP1.setBorder(Cep);
-        jFmtRG.setBorder(RG);
+
         jFmtDataDeNascimento.setBorder(DataNasc);
-        jFmtTelefone.setBorder(Telefone);
+       
         jFmtCelular.setBorder(Celular);
-        jFmtDivida.setBorder(Divida);
+
         try {
             MaskFormatter maskCpf = new MaskFormatter("###.###.###-##");
             maskCpf.setPlaceholderCharacter('_');
@@ -68,15 +69,7 @@ public class JDlgClientes extends javax.swing.JDialog {
             maskCep.setPlaceholderCharacter('_');
             jFmtCEP1.setFormatterFactory(new DefaultFormatterFactory(maskCep));
 
-            // RG
-            MaskFormatter maskRg = new MaskFormatter("##.###.###-#");
-            maskRg.setPlaceholderCharacter('_');
-            jFmtRG.setFormatterFactory(new DefaultFormatterFactory(maskRg));
-
-            MaskFormatter maskTelefone = new MaskFormatter("(##)####-####");
-            maskTelefone.setPlaceholderCharacter('_');
-            jFmtTelefone.setFormatterFactory(new DefaultFormatterFactory(maskTelefone));
-
+    
             MaskFormatter maskCelular = new MaskFormatter("(##)#####-####");
             maskCelular.setPlaceholderCharacter('_');
             jFmtCelular.setFormatterFactory(new DefaultFormatterFactory(maskCelular));
@@ -86,10 +79,10 @@ public class JDlgClientes extends javax.swing.JDialog {
 
         CAMPOS_EDICAO = new JComponent[]{
             jTxtCodigo, jTxtNome, jBtnCancelar, jBtnConfirmar,
-            jCboNivel, jFmtCelular,
+             jFmtCelular,
             jChbAtivo, jFmtCpf, jFmtDataDeNascimento, jTxtEmail,
             jCboSEXOOOO, jTxtCidade, jTxtBairro, jTxtendereço,
-            jFmtCEP1, jFmtRG, jFmtDivida, jFmtTelefone
+            jFmtCEP1
         };
     }
 
@@ -108,7 +101,6 @@ public class JDlgClientes extends javax.swing.JDialog {
         jFmtCpf = new javax.swing.JFormattedTextField();
         jFmtDataDeNascimento = new javax.swing.JFormattedTextField();
         jChbAtivo = new javax.swing.JCheckBox();
-        jCboNivel = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
         jBtnIncluir = new javax.swing.JButton();
         jBtnAlterar = new javax.swing.JButton();
@@ -120,13 +112,10 @@ public class JDlgClientes extends javax.swing.JDialog {
         filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 32767));
         filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
         jCboSEXOOOO = new javax.swing.JComboBox<>();
-        jFmtDivida = new javax.swing.JFormattedTextField();
         jTxtendereço = new javax.swing.JTextField();
         jTxtBairro = new javax.swing.JTextField();
         jTxtCidade = new javax.swing.JTextField();
         jFmtCEP1 = new javax.swing.JFormattedTextField();
-        jFmtTelefone = new javax.swing.JFormattedTextField();
-        jFmtRG = new javax.swing.JFormattedTextField();
         jFmtCelular = new javax.swing.JFormattedTextField();
         filler4 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 32767));
         filler5 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 32767));
@@ -168,15 +157,6 @@ public class JDlgClientes extends javax.swing.JDialog {
         jChbAtivo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jChbAtivoActionPerformed(evt);
-            }
-        });
-
-        jCboNivel.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jCboNivel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "administrador", "funcionario", "vendedor", "gerente" }));
-        jCboNivel.setBorder(javax.swing.BorderFactory.createTitledBorder("Nivel"));
-        jCboNivel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCboNivelActionPerformed(evt);
             }
         });
 
@@ -240,13 +220,6 @@ public class JDlgClientes extends javax.swing.JDialog {
             }
         });
 
-        jFmtDivida.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jFmtDivida.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFmtDividaActionPerformed(evt);
-            }
-        });
-
         jTxtendereço.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jTxtendereço.setBorder(javax.swing.BorderFactory.createTitledBorder("Endereço"));
 
@@ -260,20 +233,6 @@ public class JDlgClientes extends javax.swing.JDialog {
         jFmtCEP1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jFmtCEP1ActionPerformed(evt);
-            }
-        });
-
-        jFmtTelefone.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jFmtTelefone.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFmtTelefoneActionPerformed(evt);
-            }
-        });
-
-        jFmtRG.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jFmtRG.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFmtRGActionPerformed(evt);
             }
         });
 
@@ -309,35 +268,6 @@ public class JDlgClientes extends javax.swing.JDialog {
                         .addGap(18, 18, 18)
                         .addComponent(jFmtDataDeNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(jCboSEXOOOO, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(35, 35, 35)
-                        .addComponent(jFmtCEP1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20)
-                        .addComponent(jTxtendereço, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(40, 40, 40)
-                        .addComponent(jTxtBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(jTxtCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(50, 50, 50)
-                        .addComponent(jFmtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(48, 48, 48)
-                        .addComponent(jFmtCelular, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jFmtDivida, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(filler6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(jFmtRG, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(28, 28, 28)
-                        .addComponent(jCboNivel, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(59, 59, 59)
-                        .addComponent(jChbAtivo)
-                        .addGap(19, 19, 19)
-                        .addComponent(jLabel8))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addComponent(jBtnIncluir)
                         .addGap(17, 17, 17)
@@ -350,7 +280,34 @@ public class JDlgClientes extends javax.swing.JDialog {
                         .addGap(31, 31, 31)
                         .addComponent(jBtnCancelar)
                         .addGap(21, 21, 21)
-                        .addComponent(jBtnPesquisar)))
+                        .addComponent(jBtnPesquisar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(24, 24, 24)
+                                .addComponent(jCboSEXOOOO, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(30, 30, 30)
+                                .addComponent(jTxtCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(35, 35, 35)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jFmtCelular, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(415, 415, 415)
+                                        .addComponent(filler6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(73, 73, 73)
+                                        .addComponent(jChbAtivo)
+                                        .addGap(19, 19, 19)
+                                        .addComponent(jLabel8))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jFmtCEP1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(20, 20, 20)
+                                .addComponent(jTxtendereço, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(40, 40, 40)
+                                .addComponent(jTxtBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -385,24 +342,17 @@ public class JDlgClientes extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(20, 20, 20)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jTxtCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jFmtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jFmtCelular, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jFmtDivida, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jFmtCelular, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addComponent(filler6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jFmtRG, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jCboNivel, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jChbAtivo)
-                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(40, 40, 40)
+                        .addGap(29, 29, 29)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jChbAtivo)
+                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(filler6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(41, 41, 41)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jBtnIncluir)
                     .addComponent(jBtnAlterar)
@@ -452,26 +402,25 @@ public class JDlgClientes extends javax.swing.JDialog {
         if (Util.perguntar("Deseja realmente excluir o registro?")) {
             Util.mensagem("Registro excluído com sucesso!");
 
-            ClientesDAO clientesDAO = new ClientesDAO();
+            VendedorAO vendedorDAO = new VendedorAO();
             try {
-                clientesDAO.delete(viewBean());
+                vendedorDAO.delete(viewBean());
                 Util.limpar(CAMPOS_EDICAO);
                 Util.habilitar(true, jBtnIncluir, jBtnPesquisar);
                 Util.habilitar(false, jBtnExcluir, jBtnAlterar);
             } catch (ParseException ex) {
-                Logger.getLogger(JDlgClientes.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(JDlgVendedor.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else {
             Util.mensagem("Exclusão cancelada.");
         }
     }//GEN-LAST:event_jBtnExcluirActionPerformed
-    public VmanClientes viewBean() throws ParseException {
-        VmanClientes clientes = new VmanClientes();
+    public VmanVendedor viewBean() throws ParseException {
+        VmanVendedor clientes = new VmanVendedor();
 
-        clientes.setVmanIdClientes(Util.strToInt(jTxtCodigo.getText()));
+        clientes.setVmanIdVendedor(Util.strToInt(jTxtCodigo.getText()));
         clientes.setVmanNome(jTxtNome.getText());
         clientes.setVmanCpf(jFmtCpf.getText());
-        clientes.setVmanRg(Util.limparFormatacao(jFmtRG.getText()));
         clientes.setVmanSexo(Util.intToString(jCboSEXOOOO.getSelectedIndex()));
         clientes.setVmanDataNascimento(Util.strToDate(jFmtDataDeNascimento.getText()));
         clientes.setVmanEmail(jTxtEmail.getText());
@@ -479,10 +428,8 @@ public class JDlgClientes extends javax.swing.JDialog {
         clientes.setVmanendereço(jTxtendereço.getText());
         clientes.setVmanBairro(jTxtBairro.getText());
         clientes.setVmanCidade(jTxtCidade.getText());
-        clientes.setVmanTelefoneResidencial(jFmtTelefone.getText());
         clientes.setVmanCelular(Util.limparFormatacao(jFmtCelular.getText()));
-        clientes.setVmanNivel((String) jCboNivel.getSelectedItem());
-        clientes.setVmanDivida(Util.strToInt(jFmtDivida.getText()));
+
 
         if (jChbAtivo.isSelected()) {
             clientes.setVmanAtivo("S");
@@ -493,8 +440,8 @@ public class JDlgClientes extends javax.swing.JDialog {
         return clientes;
     }
 
-    public void beanView(VmanClientes clientes) {
-        jTxtCodigo.setText(Util.intToString(clientes.getVmanIdClientes()));
+    public void beanView(VmanVendedor clientes) {
+        jTxtCodigo.setText(Util.intToString(clientes.getVmanIdVendedor()));
         jTxtNome.setText(clientes.getVmanNome());
         jFmtCpf.setText(clientes.getVmanCpf());
         jCboSEXOOOO.setSelectedIndex(Util.strToInt(clientes.getVmanSexo()));
@@ -504,12 +451,7 @@ public class JDlgClientes extends javax.swing.JDialog {
         jTxtendereço.setText(clientes.getVmanendereço());
         jTxtBairro.setText(clientes.getVmanBairro());
         jTxtCidade.setText(clientes.getVmanCidade());
-        jFmtTelefone.setText(clientes.getVmanTelefoneResidencial());
         jFmtCelular.setText(clientes.getVmanCelular());
-        jFmtRG.setText(clientes.getVmanCelular());
-        jCboNivel.setSelectedItem(clientes.getVmanNivel());
-        jFmtDivida.setText(Util.intToString(clientes.getVmanDivida()));
-        jFmtRG.setText(clientes.getVmanRg());
 
         if ("S".equals(clientes.getVmanAtivo())) {
             jChbAtivo.setSelected(true);
@@ -521,21 +463,21 @@ public class JDlgClientes extends javax.swing.JDialog {
 
     private void jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmarActionPerformed
         // TODO add your handling code here:
-        ClientesDAO clientesDAO = new ClientesDAO();
+        VendedorAO vendedorDAO = new VendedorAO();
         if (incluir == true) {
             try {
 
-                clientesDAO.insert(viewBean());
+                vendedorDAO.insert(viewBean());
 
             } catch (ParseException ex) {
-                Logger.getLogger(JDlgClientes.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(JDlgVendedor.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else {
             try {
-                clientesDAO.update(viewBean());
+                vendedorDAO.update(viewBean());
 
             } catch (ParseException ex) {
-                Logger.getLogger(JDlgClientes.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(JDlgVendedor.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         Util.limpar(CAMPOS_EDICAO);
@@ -545,10 +487,10 @@ public class JDlgClientes extends javax.swing.JDialog {
 
     private void jBtnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPesquisarActionPerformed
         // TODO add your handling code here: 
-        JDlgClientesPesquisar jDlgClientesPesquisar = new JDlgClientesPesquisar(null, true);
-        jDlgClientesPesquisar.setTelaAnterior(this);
-        jDlgClientesPesquisar.setVisible(true);
-        if (jDlgClientesPesquisar.ok()) {
+        JDlgVendedorPesquisar jDlgVendedorPesquisar = new JDlgVendedorPesquisar(null, true);
+        jDlgVendedorPesquisar.setTelaAnterior(this);
+        jDlgVendedorPesquisar.setVisible(true);
+        if (jDlgVendedorPesquisar.ok()) {
             Util.habilitar(true, jBtnAlterar, jBtnExcluir);
         }
 
@@ -591,22 +533,6 @@ public class JDlgClientes extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_jFmtCelularActionPerformed
 
-    private void jFmtTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFmtTelefoneActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jFmtTelefoneActionPerformed
-
-    private void jFmtDividaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFmtDividaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jFmtDividaActionPerformed
-
-    private void jFmtRGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFmtRGActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jFmtRGActionPerformed
-
-    private void jCboNivelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCboNivelActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCboNivelActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -624,14 +550,22 @@ public class JDlgClientes extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JDlgClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDlgVendedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JDlgClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDlgVendedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JDlgClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDlgVendedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JDlgClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDlgVendedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -644,7 +578,7 @@ public class JDlgClientes extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                JDlgClientes dialog = new JDlgClientes(new javax.swing.JFrame(), true);
+                JDlgVendedor dialog = new JDlgVendedor(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -669,16 +603,12 @@ public class JDlgClientes extends javax.swing.JDialog {
     private javax.swing.JButton jBtnExcluir;
     private javax.swing.JButton jBtnIncluir;
     private javax.swing.JButton jBtnPesquisar;
-    private javax.swing.JComboBox<String> jCboNivel;
     private javax.swing.JComboBox<String> jCboSEXOOOO;
     private javax.swing.JCheckBox jChbAtivo;
     private javax.swing.JFormattedTextField jFmtCEP1;
     private javax.swing.JFormattedTextField jFmtCelular;
     private javax.swing.JFormattedTextField jFmtCpf;
     private javax.swing.JFormattedTextField jFmtDataDeNascimento;
-    private javax.swing.JFormattedTextField jFmtDivida;
-    private javax.swing.JFormattedTextField jFmtRG;
-    private javax.swing.JFormattedTextField jFmtTelefone;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JTextField jTxtBairro;
     private javax.swing.JTextField jTxtCidade;
