@@ -1,6 +1,5 @@
 package dao;
 
-import bean.VmanClientes;
 import bean.VmanVendas;
 import java.util.List;
 import org.hibernate.Criteria;

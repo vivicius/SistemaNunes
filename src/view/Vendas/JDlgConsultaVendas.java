@@ -1,14 +1,7 @@
 package view.Vendas;
 
-import bean.VmanClientes;
-import dao.ClientesDAO;
-import dao.ProdutosDAO;
-import dao.UsuariosDAO;
 import dao.VendasDAO;
-import dao.VendedorAO;
-import java.util.ArrayList;
 import java.util.List;
-import tools.Util;
 
 /**
  *
