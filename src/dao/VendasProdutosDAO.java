@@ -27,9 +27,8 @@ public class VendasProdutosDAO extends AbstractDAO {
     @Override
     public void delete(Object object) {
         session.beginTransaction();
-        session.flush();
-        session.clear();
-        session.delete(object);
+        Object managed = session.merge(object);
+        session.delete(managed);
         session.getTransaction().commit();
     }
 
