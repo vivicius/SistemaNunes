@@ -32,7 +32,7 @@ public class JDlgClientes extends javax.swing.JDialog {
     public JDlgClientes(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        setTitle("Cadastro de Produtos");
+        setTitle("Cadastro de Clientes");
         setLocationRelativeTo(null);
         Util.habilitar(false, jTxtCodigo, jTxtNome, jBtnCancelar, jBtnConfirmar, jBtnExcluir, jBtnAlterar,
                 jCboNivel, jFmtCelular, jCboSEXOOOO,

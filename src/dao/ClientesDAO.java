@@ -23,6 +23,35 @@ public class ClientesDAO extends AbstractDAO {
         session.getTransaction().commit();
     }
 
+    public Object listNome(String nome) {
+        session.beginTransaction();
+        Criteria criteria = session.createCriteria(VmanClientes.class);
+        criteria.add(Restrictions.like("vmanNome", "%" + nome + "%"));
+        List lista = criteria.list();
+        session.getTransaction().commit();
+        return lista;
+    }
+
+    public Object listCpf(String cpf) {
+        session.beginTransaction();
+        Criteria criteria = session.createCriteria(VmanClientes.class);
+        criteria.add(Restrictions.like("vmanCpf", cpf + "%"));
+
+        List lista = criteria.list();
+        session.getTransaction().commit();
+        return lista;
+    }
+
+    public Object listNomeCpf(String nome, String cpf) {
+        session.beginTransaction();
+        Criteria criteria = session.createCriteria(VmanClientes.class);
+        criteria.add(Restrictions.like("vmanNome", "%" + nome + "%"));
+        criteria.add(Restrictions.like("vmanCpf", cpf + "%"));
+        List lista = criteria.list();
+        session.getTransaction().commit();
+        return lista;
+    }
+
     @Override
     public void update(Object object) {
         session.beginTransaction();
