@@ -14,6 +14,8 @@ import dao.VendasDAO;
 import dao.VendasProdutosDAO;
 import dao.VendedorAO;
 import java.text.ParseException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -39,7 +41,7 @@ public class JDlgVendas extends javax.swing.JDialog {
     public JDlgVendas(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        TitledBorder DataNasc = BorderFactory.createTitledBorder("Data de Nascimento");
+        TitledBorder DataNasc = BorderFactory.createTitledBorder("Data da Venda");
 
         jFmtData.setBorder(DataNasc);
         ClientesDAO clientesDAO = new ClientesDAO();
@@ -78,6 +80,7 @@ public class JDlgVendas extends javax.swing.JDialog {
             jFmtData.setFormatterFactory(
                     new DefaultFormatterFactory(mascaraDataVenda)
             );
+
         } catch (ParseException ex) {
             Logger.getLogger(JDlgVendas.class.getName())
                     .log(Level.SEVERE, null, ex);
@@ -116,7 +119,7 @@ public class JDlgVendas extends javax.swing.JDialog {
 
         jTxtCodigo.setBorder(javax.swing.BorderFactory.createTitledBorder("Código"));
         getContentPane().add(jTxtCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 16, 130, 60));
-        getContentPane().add(jFmtData, new org.netbeans.lib.awtextra.AbsoluteConstraints(168, 21, 216, 50));
+        getContentPane().add(jFmtData, new org.netbeans.lib.awtextra.AbsoluteConstraints(168, 21, 216, 60));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -173,7 +176,7 @@ public class JDlgVendas extends javax.swing.JDialog {
                 jBtnCancelarActionPerformed(evt);
             }
         });
-        getContentPane().add(jBtnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 426, -1, -1));
+        getContentPane().add(jBtnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 430, -1, -1));
 
         jBtnPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-pesquisar-50.png"))); // NOI18N
         jBtnPesquisar.setText("Pesquisar");
@@ -278,15 +281,6 @@ public class JDlgVendas extends javax.swing.JDialog {
                 jBtnIncluirProd,
                 jBtnConfirmar,
                 jBtnCancelar,
-                jTxtCodigo,
-                jFmtData,
-                jCboxCliente,
-                jTxtTotal,
-                jCboxVendedor
-        );
-
-        Util.limpar(
-                jTxtCodigo,
                 jFmtData,
                 jCboxCliente,
                 jTxtTotal,
@@ -298,13 +292,13 @@ public class JDlgVendas extends javax.swing.JDialog {
                 jBtnIncluir,
                 jBtnExcluir,
                 jBtnAlterar,
-                jBtnPesquisar,
-                jTxtTotal
+                jBtnPesquisar
         );
 
-        jTxtCodigo.grabFocus();
-        incluir = true;
-        controllerVenProd.setList(new ArrayList<>());
+        Util.habilitar(false, jTxtCodigo);
+        jFmtData.grabFocus();
+
+        incluir = false;
     }//GEN-LAST:event_jBtnAlterarActionPerformed
 
     private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
@@ -381,18 +375,14 @@ public class JDlgVendas extends javax.swing.JDialog {
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
         // TODO add your handling code here:
-        if (jTxtCodigo.getText().trim().isEmpty()) {
-            Util.mensagem("Pesquise uma venda antes de alterar");
-            return;
-        }
-
         Util.habilitar(
-                true,
+                false,
                 jBtnAlterar1,
                 jBtnExcluirProd,
                 jBtnIncluirProd,
                 jBtnConfirmar,
                 jBtnCancelar,
+                jTxtCodigo,
                 jFmtData,
                 jCboxCliente,
                 jTxtTotal,
@@ -400,16 +390,21 @@ public class JDlgVendas extends javax.swing.JDialog {
         );
 
         Util.habilitar(
-                false,
+                true,
                 jBtnIncluir,
                 jBtnExcluir,
                 jBtnAlterar,
                 jBtnPesquisar
         );
 
-        Util.habilitar(false, jTxtCodigo);
-        jFmtData.grabFocus();
-        incluir = false;
+        Util.limpar(
+                jTxtCodigo,
+                jFmtData,
+                jCboxCliente,
+                jTxtTotal,
+                jCboxVendedor
+        );
+
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     private void jBtnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPesquisarActionPerformed
@@ -452,7 +447,9 @@ public class JDlgVendas extends javax.swing.JDialog {
                 jBtnPesquisar,
                 jTxtTotal
         );
-
+        LocalDate hoje = LocalDate.now();
+        DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        jFmtData.setText(hoje.format(fmt));
         jTxtCodigo.grabFocus();
         incluir = true;
         controllerVenProd.setList(new ArrayList());

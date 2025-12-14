@@ -136,7 +136,7 @@ public class VmanProdutos  implements java.io.Serializable {
 
     @Override
     public boolean equals(Object object) {
-        if (object instanceof VmanClientes) {
+        if (object instanceof VmanProdutos) {
             VmanProdutos vmanProduto = (VmanProdutos) object;
             if (vmanProduto.getVmanIdProdutos()== this.getVmanIdProdutos()) {
                 return true;
