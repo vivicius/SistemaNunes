@@ -152,8 +152,15 @@ public void setTelaAnterior(JDlgVendas jDlgVendas, VmanVendasProdutos vendasProd
         vendasProdutos.setVmanProdutos((VmanProdutos) jCbxVmanProd.getSelectedItem());
         vendasProdutos.setVmanQuantidade(Util.strToInt(jTxtQuantidade.getText()));
         vendasProdutos.setVmanValorUnitario(Util.strToDouble(jTxtVmanVU.getText()));
-        jDlgVendas.controllerVenProd.addBean(vendasProdutos);
+       
+        if (incluir == true) {
+            jDlgVendas.controllerVenProd.addBean(vendasProdutos);
+        } else {
+            jDlgVendas.controllerVenProd.removeBean(jDlgVendas.getjTable1().getSelectedRow());
+            jDlgVendas.controllerVenProd.addBean(vendasProdutos);
+        }
         setVisible(false);
+        
     }//GEN-LAST:event_jBtnOKActionPerformed
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed

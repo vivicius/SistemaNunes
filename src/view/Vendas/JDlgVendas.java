@@ -21,6 +21,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.BorderFactory;
+import javax.swing.JTable;
 import javax.swing.border.TitledBorder;
 import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.MaskFormatter;
@@ -300,7 +301,9 @@ public class JDlgVendas extends javax.swing.JDialog {
 
         incluir = false;
     }//GEN-LAST:event_jBtnAlterarActionPerformed
-
+    public JTable getjTable1() {
+        return jTable1;
+    }
     private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
         if (Util.perguntar("Deseja excluir ?")) {
             VendasDAO vendasDAO = new VendasDAO();
@@ -555,4 +558,6 @@ public class JDlgVendas extends javax.swing.JDialog {
     private javax.swing.JTextField jTxtCodigo;
     private javax.swing.JTextField jTxtTotal;
     // End of variables declaration//GEN-END:variables
+
+
 }
