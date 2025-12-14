@@ -19,6 +19,7 @@ import com.formdev.flatlaf.FlatIntelliJLaf;
 import java.awt.BorderLayout;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
+import view.Clientes.JDlgConsultaClientes;
 import view.Produtos.JDlgProdutos;
 import view.Vendas.JDlgVendas;
 
@@ -410,6 +411,9 @@ public class JFrmPrincipal extends javax.swing.JFrame {
 
     private void jMnConsultaClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMnConsultaClienteActionPerformed
         // TODO add your handling code here:
+        JDlgConsultaClientes conclki = new JDlgConsultaClientes(this, true);
+        conclki.setLocationRelativeTo(this); // centraliza
+        conclki.setVisible(true);
     }//GEN-LAST:event_jMnConsultaClienteActionPerformed
 
     private void jMnConsultaVendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMnConsultaVendedorActionPerformed
