@@ -183,7 +183,21 @@ public class VmanVendedor  implements java.io.Serializable {
         this.vmanAtivo = vmanAtivo;
     }
 
+   @Override
+    public String toString() {
+        return this.vmanIdVendedor + " - " + this.vmanNome;
+    }
 
+    @Override
+    public boolean equals(Object object) {
+        if (object instanceof VmanVendedor) {
+            VmanVendedor vmanVendore = (VmanVendedor) object;
+            if (vmanVendore.getVmanIdVendedor()== this.getVmanIdVendedor()) {
+                return true;
+            }
+        }
+        return false;
+    }
 
 
 

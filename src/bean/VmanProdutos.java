@@ -133,7 +133,21 @@ public class VmanProdutos  implements java.io.Serializable {
     }
 
 
+   @Override
+    public String toString() {
+        return this.vmanIdProdutos + " - " + this.vmanProduto;
+    }
 
+    @Override
+    public boolean equals(Object object) {
+        if (object instanceof VmanClientes) {
+            VmanProdutos vmanProduto = (VmanProdutos) object;
+            if (vmanProduto.getVmanIdProdutos()== this.getVmanIdProdutos()) {
+                return true;
+            }
+        }
+        return false;
+    }
 
 
 }

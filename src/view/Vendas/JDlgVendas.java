@@ -115,7 +115,7 @@ public class JDlgVendas extends javax.swing.JDialog {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTxtCodigo.setBorder(javax.swing.BorderFactory.createTitledBorder("Código"));
-        getContentPane().add(jTxtCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 16, 130, -1));
+        getContentPane().add(jTxtCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 16, 130, 60));
         getContentPane().add(jFmtData, new org.netbeans.lib.awtextra.AbsoluteConstraints(168, 21, 216, 50));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -134,10 +134,10 @@ public class JDlgVendas extends javax.swing.JDialog {
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 126, 927, 280));
 
         jCboxCliente.setBorder(javax.swing.BorderFactory.createTitledBorder("Clientes"));
-        getContentPane().add(jCboxCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 20, 115, 60));
+        getContentPane().add(jCboxCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 20, 220, 60));
 
         jTxtTotal.setBorder(javax.swing.BorderFactory.createTitledBorder("Total"));
-        getContentPane().add(jTxtTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 20, 129, -1));
+        getContentPane().add(jTxtTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 18, 129, 60));
 
         jBtnAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-alterar-50.png"))); // NOI18N
         jBtnAlterar.setText("Alterar");
@@ -223,7 +223,7 @@ public class JDlgVendas extends javax.swing.JDialog {
                 jCboxVendedorActionPerformed(evt);
             }
         });
-        getContentPane().add(jCboxVendedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 20, 115, -1));
+        getContentPane().add(jCboxVendedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 20, 200, 60));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -417,6 +417,7 @@ public class JDlgVendas extends javax.swing.JDialog {
         JDlgVendasPesquisar jDlgVendasPesquisar = new JDlgVendasPesquisar(null, true);
         jDlgVendasPesquisar.setTelaAnterior(this);
         jDlgVendasPesquisar.setVisible(true);
+        Util.habilitar(true, jBtnAlterar, jBtnExcluir);
     }//GEN-LAST:event_jBtnPesquisarActionPerformed
 
     private void jBtnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirActionPerformed

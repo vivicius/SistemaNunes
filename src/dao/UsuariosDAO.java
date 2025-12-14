@@ -51,6 +51,18 @@ public class UsuariosDAO extends AbstractDAO {
         return lista;
     }
 
+    public VmanUsuarios buscarPorApelido(String apelido) {
+        session.beginTransaction();
+
+        Criteria criteria = session.createCriteria(VmanUsuarios.class);
+        criteria.add(Restrictions.eq("vmanApelido", apelido));
+
+        VmanUsuarios usuario = (VmanUsuarios) criteria.uniqueResult();
+
+        session.getTransaction().commit();
+        return usuario;
+    }
+
     @Override
     public Object listAll() {
         session.beginTransaction();
