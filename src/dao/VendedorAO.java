@@ -51,6 +51,35 @@ public class VendedorAO extends AbstractDAO {
         return lista;
     }
 
+    public Object listNome(String nome) {
+        session.beginTransaction();
+        Criteria criteria = session.createCriteria(VmanVendedor.class);
+        criteria.add(Restrictions.like("vmanNome", "%" + nome + "%"));
+        List lista = criteria.list();
+        session.getTransaction().commit();
+        return lista;
+    }
+
+    public Object listEmail(String email) {
+        session.beginTransaction();
+        Criteria criteria = session.createCriteria(VmanVendedor.class);
+        criteria.add(Restrictions.like("vmanEmail", "%" + email + "%"));
+
+        List lista = criteria.list();
+        session.getTransaction().commit();
+        return lista;
+    }
+
+    public Object listNomeEmail(String nome, String email) {
+        session.beginTransaction();
+        Criteria criteria = session.createCriteria(VmanVendedor.class);
+        criteria.add(Restrictions.like("vmanNome", "%" + nome + "%"));
+        criteria.add(Restrictions.like("vmanEmail", "%" + email + "%"));
+        List lista = criteria.list();
+        session.getTransaction().commit();
+        return lista;
+    }
+
     @Override
     public Object listAll() {
         session.beginTransaction();

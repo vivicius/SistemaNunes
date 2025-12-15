@@ -20,8 +20,11 @@ import java.awt.BorderLayout;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import view.Clientes.JDlgConsultaClientes;
+import view.Produtos.JDlgConsultaProdutos;
 import view.Produtos.JDlgProdutos;
+import view.Vendas.JDlgConsultaVendas;
 import view.Vendas.JDlgVendas;
+import view.Vendedor.JDlgConsultaVendedores;
 
 /**
  *
@@ -36,7 +39,7 @@ public class JFrmPrincipal extends javax.swing.JFrame {
     Image darkImg = dark.getImage();
     Image padraoImg = padrao.getImage();
 
-    JPanel background = new JPanel() {  
+    JPanel background = new JPanel() {
         @Override
         protected void paintComponent(Graphics g) {
             super.paintComponent(g);
@@ -50,7 +53,7 @@ public class JFrmPrincipal extends javax.swing.JFrame {
     public JFrmPrincipal() {
         initComponents();
         setExtendedState(JFrmPrincipal.MAXIMIZED_BOTH);
-        
+
         getContentPane().add(background, BorderLayout.CENTER);
     }
 
@@ -330,8 +333,7 @@ public class JFrmPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         try {
 
-            
-            getContentPane().removeAll();
+            getContentPane().remove(background);
             background = new JPanel() {
                 @Override
                 protected void paintComponent(Graphics g) {
@@ -352,8 +354,8 @@ public class JFrmPrincipal extends javax.swing.JFrame {
     private void jMnTemaEscuroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMnTemaEscuroActionPerformed
         // TODO add your handling code here:
         try {
-            
-            getContentPane().removeAll();
+
+            getContentPane().remove(background);
             background = new JPanel() {
                 @Override
                 protected void paintComponent(Graphics g) {
@@ -377,9 +379,9 @@ public class JFrmPrincipal extends javax.swing.JFrame {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 
             SwingUtilities.updateComponentTreeUI(this);
-            
-            getContentPane().removeAll();
-            
+
+            getContentPane().remove(background);
+
             JPanel background2 = new JPanel() {
                 @Override
                 protected void paintComponent(Graphics g) {
@@ -418,14 +420,23 @@ public class JFrmPrincipal extends javax.swing.JFrame {
 
     private void jMnConsultaVendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMnConsultaVendedorActionPerformed
         // TODO add your handling code here:
+        JDlgConsultaVendedores conclki = new JDlgConsultaVendedores(this, true);
+        conclki.setLocationRelativeTo(this); // centraliza
+        conclki.setVisible(true);
     }//GEN-LAST:event_jMnConsultaVendedorActionPerformed
 
     private void jMnConsultasProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMnConsultasProdutosActionPerformed
         // TODO add your handling code here:
+        JDlgConsultaProdutos conclki = new JDlgConsultaProdutos(this, true);
+        conclki.setLocationRelativeTo(this); // centraliza
+        conclki.setVisible(true);
     }//GEN-LAST:event_jMnConsultasProdutosActionPerformed
 
     private void jMnConsultasVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMnConsultasVendasActionPerformed
         // TODO add your handling code here:
+        JDlgConsultaVendas conclki = new JDlgConsultaVendas(this, true);
+        conclki.setLocationRelativeTo(this); // centraliza
+        conclki.setVisible(true);
     }//GEN-LAST:event_jMnConsultasVendasActionPerformed
 
     private void jBtnClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnClientesActionPerformed
